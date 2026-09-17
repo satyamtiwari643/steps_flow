@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- SECTION: Meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StepFlow – Daily Fitness Tracker</title>
+
+    <!-- SECTION: Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- SECTION: Styles -->
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- SECTION: Header -->
+      <header class="app-header">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div class="brand-text">
+            <h1 class="brand-title">StepFlow</h1>
+            <p class="brand-subtitle">Daily steps & activity snapshot</p>
+          </div>
+        </div>
+        <button class="day-toggle" type="button" aria-label="Switch day">
+          Today
+        </button>
+      </header>
+
+      <main>
+        <!-- SECTION: Hero Progress -->
+        <section class="hero-card" aria-labelledby="daily-steps-heading">
+          <header class="hero-header">
+            <div>
+              <h2 id="daily-steps-heading">Today's steps</h2>
+              <p class="hero-subtitle">Stay on your feet and close your ring</p>
+            </div>
+            <div class="goal-pill">
+              <span class="goal-label">Daily goal</span>
+              <span class="goal-value" id="goalValue">5,000</span>
+            </div>
+          </header>
+
+          <div class="hero-main">
+            <div class="hero-number-group">
+              <p class="steps-label">Steps so far</p>
+              <p class="steps-number" id="stepsNumber">0</p>
+              <p class="steps-percent" id="stepsPercent">0% of goal</p>
+            </div>
+
+            <div class="progress-visual" aria-hidden="true">
+              <div class="progress-ring">
+                <div class="progress-ring-inner">
+                  <div class="progress-ring-glow"></div>
+                </div>
+                <svg
+                  class="progress-ring-svg"
+                  viewBox="0 0 120 120"
+                  aria-hidden="true"
+                >
+                  <circle
+                    class="progress-ring-bg"
+                    cx="60"
+                    cy="60"
+                    r="52"
+                  ></circle>
+                  <circle
+                    class="progress-ring-fg"
+                    cx="60"
+                    cy="60"
+                    r="52"
+                    id="progressCircle"
+                  ></circle>
+                </svg>
+                <span class="progress-ring-text" id="ringPercent">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION: Linear progress bar -->
+          <div class="linear-progress" aria-hidden="true">
+            <div class="linear-track">
+              <div class="linear-fill" id="linearFill"></div>
+            </div>
+            <div class="linear-marks">
+              <span>0</span>
+              <span>50%</span>
+              <span>100%</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION: Activity Summary -->
+        <section class="summary-grid" aria-label="Activity summary">
+          <article class="summary-card">
+            <h3>Activity level</h3>
+            <p class="summary-pill" id="activityLevel">Moderate</p>
+            <p class="summary-detail" id="activityMessage">
+              Nice work—you're on track to hit your goal. A short evening walk
+              will close the gap.
+            </p>
+          </article>
+
+          <article class="summary-card">
+            <h3>Quick stats</h3>
+            <dl class="stats-list">
+              <div class="stat-row">
+                <dt>Distance</dt>
+                <dd id="distanceStat">4.7 km</dd>
+              </div>
+              <div class="stat-row">
+                <dt>Active minutes</dt>
+                <dd id="activeMinutesStat">38 min</dd>
+              </div>
+              <div class="stat-row">
+                <dt>Calories</dt>
+                <dd id="caloriesStat">280 kcal</dd>
+              </div>
+            </dl>
+          </article>
+        </section>
+
+        <!-- SECTION: Input Controls -->
+        <section class="controls" aria-label="Update steps and goal">
+          <form class="controls-form" id="trackerForm">
+            <div class="field-group">
+              <label for="stepsInput">Update steps</label>
+              <div class="field-inline">
+                <input
+                  id="stepsInput"
+                  name="steps"
+                  type="number"
+                  min="0"
+                  step="100"
+                  inputmode="numeric"
+                  placeholder="Enter today's steps"
+                />
+                <button type="button" class="btn ghost" id="quickAddBtn">
+                  +1,000
+                </button>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="goalInput">Daily goal</label>
+              <input
+                id="goalInput"
+                name="goal"
+                type="number"
+                min="1000"
+                step="500"
+                inputmode="numeric"
+                placeholder="e.g. 8000"
+              />
+            </div>
+
+            <div class="controls-actions">
+              <button type="submit" class="btn primary">Save progress</button>
+              <button type="button" class="btn subtle" id="resetBtn">
+                Reset day
+              </button>
+            </div>
+          </form>
+          <p class="hint-text">
+            Tip: Start with a realistic goal and increase it once you hit it
+            consistently.
+          </p>
+        </section>
+      </main>
+
+      <!-- SECTION: Footer -->
+      <footer class="app-footer">
+        <p>Designed for mindful movement, one step at a time.</p>
+      </footer>
+    </div>
+
+    <!-- SECTION: Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>
